@@ -78,6 +78,7 @@ architecture Behavioral of Nexys2_top_shell is
 		clockbus : OUT std_logic_vector(26 downto 0)
 		);
 	END COMPONENT;
+	     
 
 -------------------------------------------------------------------------------------
 --Below are declarations for signals that wire-up this top-level module.
@@ -91,13 +92,33 @@ signal ClockBus_sig : STD_LOGIC_VECTOR (26 downto 0);
 --------------------------------------------------------------------------------------
 --Insert your design's component declaration below	
 --------------------------------------------------------------------------------------
+COMPONENT MooreElevatorController
+	PORT(
+		clk : IN std_logic;
+		reset : IN std_logic;
+		stop : IN std_logic;
+		up_down : IN std_logic;          
+		floor : OUT std_logic_vector(3 downto 0)
+		);
+	END COMPONENT;
 
+	
+COMPONENT MealyElevatorController_Shell
+	PORT(
+		clk : IN std_logic;
+		reset : IN std_logic;
+		stop : IN std_logic;
+		up_down : IN std_logic;          
+		floor : OUT std_logic_vector(3 downto 0);
+		nextfloor : OUT std_logic_vector(3 downto 0)
+		);
+	END COMPONENT;
 
 
 --------------------------------------------------------------------------------------
 --Insert any required signal declarations below
 --------------------------------------------------------------------------------------
-
+signal floor_sig1,floor_sig2 : std_logic_vector(3 downto 0);
 
 
 begin
@@ -125,10 +146,10 @@ LED <= CLOCKBUS_SIG(26 DOWNTO 19);
 --		  Example: if you are not using 7-seg display #3 set nibble3 to "0000"
 --------------------------------------------------------------------------------------
 
-nibble0 <= 
-nibble1 <= 
-nibble2 <= 
-nibble3 <= 
+nibble0 <=  floor_sig1(3 downto 0);
+nibble1 <=  floor_sig2(3 downto 0);
+nibble2 <=  "0000";
+nibble3 <=  "0000";
 
 --This code converts a nibble to a value that can be displayed on 7-segment display #0
 	sseg0: nibble_to_sseg PORT MAP(
@@ -171,7 +192,22 @@ nibble3 <=
 -----------------------------------------------------------------------------
 --Instantiate the design you with to implement below and start wiring it up!:
 -----------------------------------------------------------------------------
-
+--Inst_MooreElevatorController: MooreElevatorController PORT MAP(
+	--	clk => ClockBus_Sig(25),
+		--reset => btn(3),
+		--stop => switch(1),
+		--up_down => switch(0),
+		--floor => floor_sig1 (3 downto 0)
+--	);
+	     
+	Inst_MealyElevatorController_Shell: MealyElevatorController_Shell PORT MAP(
+		clk => ClockBus_Sig(25),
+		reset => btn(3),
+		stop => switch(1),
+		up_down => switch(0),
+		floor => floor_sig1(3 downto 0),
+		nextfloor => floor_sig2(3 downto 0)
+	);
 
 end Behavioral;
 
