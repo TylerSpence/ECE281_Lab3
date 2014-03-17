@@ -125,6 +125,16 @@ COMPONENT Morefloors
 		);
 	END COMPONENT;
 
+	COMPONENT Change_inputs
+	PORT(
+		clk : IN std_logic;
+		reset : IN std_logic;
+		input : IN std_logic_vector(3 downto 0);          
+		floor : OUT std_logic_vector(3 downto 0)
+		);
+	END COMPONENT;
+
+	
 
 
 --------------------------------------------------------------------------------------
@@ -230,6 +240,12 @@ nibble3 <=  "0000";
 	--	digit => floor_sig2(3 downto 0)
 	--);
 
+Inst_Change_inputs: Change_inputs PORT MAP(
+		clk => ClockBus_Sig(25),
+		reset => btn(3),
+		input => switch (3 downto 0),
+		floor => floor_sig1 (3 downto 0)
+	);
 
 end Behavioral;
 
