@@ -114,6 +114,18 @@ COMPONENT MealyElevatorController_Shell
 		);
 	END COMPONENT;
 
+COMPONENT Morefloors
+	PORT(
+		clk : IN std_logic;
+		reset : IN std_logic;
+		stop : IN std_logic;
+		up_down : IN std_logic;          
+		floor : OUT std_logic_vector(3 downto 0);
+		digit : OUT std_logic_vector(3 downto 0)
+		);
+	END COMPONENT;
+
+
 
 --------------------------------------------------------------------------------------
 --Insert any required signal declarations below
@@ -200,14 +212,24 @@ nibble3 <=  "0000";
 		--floor => floor_sig1 (3 downto 0)
 --	);
 	     
-	Inst_MealyElevatorController_Shell: MealyElevatorController_Shell PORT MAP(
-		clk => ClockBus_Sig(25),
-		reset => btn(3),
-		stop => switch(1),
-		up_down => switch(0),
-		floor => floor_sig1(3 downto 0),
-		nextfloor => floor_sig2(3 downto 0)
-	);
+	--Inst_MealyElevatorController_Shell: MealyElevatorController_Shell PORT MAP(
+	--	clk => ClockBus_Sig(25),
+	--	reset => btn(3),
+	--	stop => switch(1),
+	--	up_down => switch(0),
+	--	floor => floor_sig1(3 downto 0),
+	--	nextfloor => floor_sig2(3 downto 0)
+	--);
+	
+	--	Inst_Morefloors: Morefloors PORT MAP(
+   --clk => ClockBus_Sig(25),
+	--	reset => btn(3),
+	--	stop => switch(1),
+	--	up_down => switch(0),
+	--	floor => floor_sig1(3 downto 0),
+	--	digit => floor_sig2(3 downto 0)
+	--);
+
 
 end Behavioral;
 
