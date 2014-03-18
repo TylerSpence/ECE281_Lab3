@@ -3,6 +3,15 @@ ECE281_Lab3
 
 Spence's Lab3
 
+#Functionality
+Basic Moore
+
+Basic Mealy
+
+More Floors
+
+Change Inputs
+
 #Schematic
 The basic functionality and setup of the code provided is represented by the schematic below. 
 ![alt tag] (https://raw.github.com/TylerSpence/ECE281_Lab3/master/schematic.jpg)
