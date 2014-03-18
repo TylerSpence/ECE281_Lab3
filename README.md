@@ -109,8 +109,18 @@ Inst_Change_inputs: Change_inputs PORT MAP(
 	);
 ```	
 #Bad Code
-
+the code listed below is in error because it uses conditional logic in an area where conditional logic should not be used.
+```vhdl
+if clk'event and clk= '1'
+```
 #Good Code
+instead, separate if statements should be used as demonstrated below
+```vhdl
+ if rising_edge(clk) then
 
+
+		if stop= '0' then
+		if reset='1' then
+```		
 #Notes
 The only real debugging required was syntax, most of the other issues just arose from thinking about processes in the right way. Captain Silva checked off my basic funtionality in class and the two B funtionalities in his office. 
