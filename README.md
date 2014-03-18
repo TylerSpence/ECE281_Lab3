@@ -111,3 +111,6 @@ Inst_Change_inputs: Change_inputs PORT MAP(
 #Bad Code
 
 #Good Code
+
+#Notes
+The only real debugging required was syntax, most of the other issues just arose from thinking about processes in the right way. Captain Silva checked off my basic funtionality in class and the two B funtionalities in his office. 
