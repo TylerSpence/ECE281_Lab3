@@ -1,10 +1,10 @@
 ----------------------------------------------------------------------------------
 -- Company: USAFA/DFEC
--- Engineer: Silva
+-- Engineer: Spence
 -- 
 -- Create Date:    10:33:47 07/07/2012 
 -- Design Name: 
--- Module Name:    MooreElevatorController_Silva - Behavioral 
+-- Module Name:    MooreElevatorController - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
